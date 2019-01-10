@@ -1,0 +1,15 @@
+<h5><%= traveler.firstName.toUpperCase() %> HAS VISITED THESE PLACES: </h5>
+
+<ul>
+	<% cities.forEach((c) => { %>
+		<li><%= c.city %>, <%= c.state %>
+			<form method="POST" action="/association/?_method=DELETE">
+				<input type="hidden" name="cityId" value="<%= c.id %>">
+				<input type="hidden" name="travelerId" value="<%= traveler.id %>">
+				<input type="submit" value="Delete">
+			</form>
+		</li>
+	<% }); %>
+</ul>
+
+<% include ./map.ejs %>

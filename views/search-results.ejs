@@ -1,0 +1,16 @@
+<h1>Results for '<%= searchTerms.city %>, <%= searchTerms.state %>'</h1>
+
+<ul>
+	<% results.forEach((r) => { %>
+		<li><%= r.city %>, <%= r.state %>: (<%= r.long %>, <%= r.lat %>)
+			<form method="POST" action="/add">
+				<input type="hidden" name="city" value="<%= r.city %>">
+				<input type="hidden" name="state" value="<%= r.state %>">
+				<input type="hidden" name="long" value="<%= r.long %>">
+				<input type="hidden" name="lat" value="<%= r.lat %>">
+				<input type="hidden" name="travelerId" value="<%= searchTerms.travelerId %>">
+				<input type="submit" value="Add to Favorites">
+			</form>
+		</li>
+	<% }); %>
+</ul>

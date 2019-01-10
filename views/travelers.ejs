@@ -1,0 +1,23 @@
+<!-- Create a `travelers` view that has a form for adding new travellers and lists all travelers underneath the form  -->
+<h1>Add a new traveler</h1>
+
+<form method="POST" action="/travelers">
+	<label for="firstName">First Name</label>
+	<input type="text" name="firstName" id="firstName">
+	<label for="lastName">Last Name</label>
+	<input type="text" name="lastName" id="lastName">
+	<input type="submit" value="Submit New Traveler!">
+</form>
+
+<h2>All travelers</h2>
+
+<ol>
+	<% newTraveler.forEach((p) => { %>
+		<li>
+			<a href="/travelers/<%= p.id %>"><%= p.firstName %> <%= p.lastName %></a>
+			<form method="POST" action="/travelers/<%= p.id %>/?_method=DELETE">
+				<input type="submit" value="Delete">
+			</form>
+		</li>
+	<% }) %>
+</ol>
